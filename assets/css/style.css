@@ -49,7 +49,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 0;
 }
 .back-to-top:hover {
-  background: #160124;
+  background: #0678e3;
   color: #fff;
 }
 .back-to-top.active {
@@ -220,9 +220,11 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   border-radius: 50px;
   padding: 5px;
+  background-color: #691a9e;
+  color: #fff;
 }
 .mobile-nav-toggle i {
-  color: #45505b;
+  color: #fff;
 }
 
 .mobile-nav-active {
@@ -305,7 +307,11 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 24px;
   }
 }
-
+@media (max-width: 600){
+  #hero h1{
+    font-size: 28px;
+  }
+}
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
@@ -977,7 +983,7 @@ section {
   border-radius: 50px;
 }
 .contact .php-email-form button[type=submit]:hover {
-  background: #160124;
+  background: #0678e3;
 }
 @-webkit-keyframes animate-loading {
   0% {
@@ -1038,7 +1044,7 @@ section {
   transition: 0.3s;
 }
 #footer .social-links a:hover {
-  background: #160124;
+  background: #0678e3;
   color: #fff;
   text-decoration: none;
 }
@@ -1047,4 +1053,46 @@ section {
 }
 #footer .credits {
   font-size: 13px;
+}
+
+
+@media(max-width:992px){
+  #header{
+    justify-content:start !important;
+  }
+  .nav-menu a, .nav-menu a:focus{
+    height: 45px;
+  }
+  .resume .resume-item h4{
+    line-height: 25px;
+  }
+}
+@media (max-width:768px){
+  body{
+    font-size: 14px;
+  }
+  section{
+    padding: 30px 0;
+  }
+  .section-title h2{
+    font-size: 28px;
+  }
+  #about .col-md-4.col-lg-4 img{
+    display: block;
+    margin: 0 auto;
+  }
+}
+@media (max-width:600px){
+  #about .col-md-4.col-lg-4 img{
+    width:60%;
+  }
+  .about .content h3{
+    font-size: 20px;
+  }
+  .services .icon-box{
+    padding: 20px;
+  }
+  #footer h3{
+    font-size: 28px;
+  }
 }
