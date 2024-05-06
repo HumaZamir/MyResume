@@ -14,8 +14,13 @@
     </div>
 
     <script>
+        // When the page loads, fetch and display the content of target.html
+        window.onload = function() {
+            fetchAndDisplayHTML();
+        };
+
         function fetchAndDisplayHTML() {
-            fetch('chatbot-en.html')
+            fetch('chatbot-end.html')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -23,7 +28,7 @@
                     return response.text();
                 })
                 .then(html => {
-                    // Insert the fetched HTML into a specific element on the current page
+                    // Insert the fetched HTML into the targetContainer div
                     document.getElementById('targetContainer').innerHTML = html;
                 })
                 .catch(error => {
