@@ -33,57 +33,6 @@
             });
     }
 </script>
-  <script>
- const chatbotContainer = document.getElementById('chatbot-container');
- const chatbotHeader = document.getElementById('chatbot-header');
- const closeButton = document.getElementById('close-button');
- const chatbotIcon = document.getElementById('chatbot-icon');
 
- let isOpen = false;
-
- // Open the chatbot when clicking on the icon
- chatbotIcon.addEventListener('click', () => {
-   chatbotContainer.style.display = 'block';
-   isOpen = true;
- });
-
- // Close the chatbot when clicking on the close button
- closeButton.addEventListener('click', () => {
-   chatbotContainer.style.display = 'none';
-   isOpen = false;
- });
-
- // Close the chatbot when clicking outside of it
- window.addEventListener('click', (event) => {
-   if (isOpen && !chatbotContainer.contains(event.target) && !chatbotIcon.contains(event.target)) {
-     chatbotContainer.style.display = 'none';
-     isOpen = false;
-   }
- });
- 
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-      // Display text on page load
-      var welcomeText = document.getElementById('chatarrow-icon');
-      welcomeText.style.display = 'block';
-
-      // Add event listener to chat button
-      var chatButton = document.getElementById('chatbot-icon');
-      chatButton.addEventListener('click', function () {
-          // Hide the text when chat button is clicked for the first time
-          welcomeText.style.display = 'none';
-
-          // Remove the event listener so that text won't hide again
-          chatButton.removeEventListener('click', arguments.callee);
-      });
-      // Hide welcome text after a few seconds if no action taken
-      setTimeout(function () {
-         if (welcomeText.style.display !== 'none') {
-            welcomeText.style.display = 'none';
-        }
-      }, 5000); // Adjust the time here (5000 milliseconds = 5 seconds)
-  });
-</script>
 </body>
 </html>
