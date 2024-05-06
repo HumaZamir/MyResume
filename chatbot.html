@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fetch HTML via Proxy</title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Source Page</title>
 </head>
 <body>
-  <div id="targetContainer">
-    <!-- Fetched HTML content will be inserted here -->
-</div>
-  <script>
-    function fetchAndDisplayHTML() {
-        fetch('chatbot-en.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(html => {
-                // Insert the fetched HTML into a specific element on the current page
-                document.getElementById('targetContainer').innerHTML = html;
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
-    }
-</script>
+    <button onclick="fetchAndDisplayHTML()">Fetch HTML</button>
+
+    <!-- This is an element where you want to display the fetched HTML content -->
+    <div id="targetContainer">
+        <!-- Fetched HTML content will be inserted here -->
+    </div>
+
+    <script>
+        function fetchAndDisplayHTML() {
+            fetch('target.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    // Insert the fetched HTML into a specific element on the current page
+                    document.getElementById('targetContainer').innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+    </script>
 </body>
 </html>
