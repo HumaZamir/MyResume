@@ -7,18 +7,26 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<div id="content"></div>
-
-<script type="text/javascript">
-  var apiUrl = 'chatbot-en.html';
-  fetch(apiUrl).then(response => {
-    return response.json();
-  }).then(data => {
-    // Work with JSON data here
-    console.log(data);
-  }).catch(err => {
-    // Do something for an error here
-  });
+  <div id="targetContainer">
+    <!-- Fetched HTML content will be inserted here -->
+</div>
+  <script>
+    function fetchAndDisplayHTML() {
+        fetch('chatbot-en.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(html => {
+                // Insert the fetched HTML into a specific element on the current page
+                document.getElementById('targetContainer').innerHTML = html;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    }
 </script>
 </body>
 </html>
