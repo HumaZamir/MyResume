@@ -1,3 +1,12 @@
+To resolve the JavaScript errors in your code, let's make the following adjustments:
+
+1. Ensure that the elements being accessed in your JavaScript code exist in the DOM when the script runs.
+2. Wrap your event listeners in a check to ensure that the elements they're attached to exist before trying to add event listeners.
+3. Properly handle the situation when an element is not found or when an operation fails.
+
+Here's the modified code:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +23,11 @@
     // When the page loads, fetch and display the content of target.html
     window.onload = function() {
         fetchAndDisplayHTML();
+        
     };
 
     function fetchAndDisplayHTML() {
-        fetch('chatbot-en.html')
+        fetch('https://humazamir.github.io/portfolio/chatbot-en.html')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -33,6 +43,61 @@
             });
     }
 </script>
-
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const chatbotIcon = document.getElementById('chatbot-icon');
+    const chatbotContainer = document.getElementById('chatbot-container');
+    const closeButton = document.getElementById('close-button');
+  
+    if (chatbotIcon && chatbotContainer && closeButton) {
+      let isOpen = false;
+  
+      // Open the chatbot when clicking on the icon
+      chatbotIcon.addEventListener('click', () => {
+        chatbotContainer.style.display = 'block';
+        isOpen = true;
+      });
+  
+      // Close the chatbot when clicking on the close button
+      closeButton.addEventListener('click', () => {
+        chatbotContainer.style.display = 'none';
+        isOpen = false;
+      });
+  
+      // Close the chatbot when clicking outside of it
+      window.addEventListener('click', (event) => {
+        if (isOpen && !chatbotContainer.contains(event.target) && !chatbotIcon.contains(event.target)) {
+          chatbotContainer.style.display = 'none';
+          isOpen = false;
+        }
+      });
+  
+      // Display text on page load
+      const welcomeText = document.getElementById('chatarrow-icon');
+      if (welcomeText) {
+        welcomeText.style.display = 'block';
+  
+        // Add event listener to chat button
+        chatbotIcon.addEventListener('click', function () {
+          // Hide the text when chat button is clicked for the first time
+          welcomeText.style.display = 'none';
+  
+          // Remove the event listener so that text won't hide again
+          chatbotIcon.removeEventListener('click', arguments.callee);
+        });
+  
+        // Hide welcome text after a few seconds if no action taken
+        setTimeout(function () {
+          if (welcomeText.style.display !== 'none') {
+            welcomeText.style.display = 'none';
+          }
+        }, 5000); // Adjust the time here (5000 milliseconds = 5 seconds)
+      }
+    }
+  });
+</script>
 </body>
 </html>
+```
+
+These modifications ensure that your JavaScript code executes without causing errors by first checking if the necessary elements exist before trying to access or manipulate them.
