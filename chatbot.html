@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Source Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fetch HTML via Proxy</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-   <!-- This is an element where you want to display the fetched HTML content -->
-    <div id="targetContainer">
-        <!-- Fetched HTML content will be inserted here -->
-    </div>
+  <div id="targetContainer">
+    <!-- Fetched HTML content will be inserted here -->
+  </div>
+  <script>
+    // When the page loads, fetch and display the content of target.html
+    window.onload = function() {
+        fetchAndDisplayHTML();
+    };
 
-    <script>
-        // When the page loads, fetch and display the content of target.html
-        window.onload = function() {
-            fetchAndDisplayHTML();
-        };
-
-        function fetchAndDisplayHTML() {
-            fetch('chatbot-en.html')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(html => {
-                    // Insert the fetched HTML into the targetContainer div
-                    document.getElementById('targetContainer').innerHTML = html;
-                })
-                .catch(error => {
-                    console.error('There was a problem with the fetch operation:', error);
-                });
-        }
-    </script>
+    function fetchAndDisplayHTML() {
+        fetch('chatbot-en.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(html => {
+                // Insert the fetched HTML into the targetContainer div
+                document.getElementById('targetContainer').innerHTML = html;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    }
+</script>
 </body>
 </html>
